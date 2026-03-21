@@ -1,0 +1,87 @@
+.how {
+  padding: 6rem 2rem;
+  background: var(--bg-secondary);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  }
+
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-glass);
+    border: var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: var(--glass-blur);
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--accent-glow);
+    }
+  }
+
+  &__step-number {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: var(--accent-glow);
+  }
+
+  &__step-text {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  &__connector {
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(180deg, var(--accent-primary), transparent);
+    opacity: 0.4;
+    margin-left: calc(1.5rem + 21px);
+  }
+}

@@ -1,0 +1,67 @@
+.problem {
+  padding: 6rem 2rem;
+  background: var(--bg-secondary);
+  position: relative;
+
+  // Top border glow
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  }
+
+  &__content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  &__text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__item {
+    padding: 1rem 1.25rem 1rem 3rem;
+    position: relative;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    background: var(--bg-glass);
+    border: var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: var(--glass-blur);
+    transition: border-color 0.3s, background 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff6b6b;
+      box-shadow: 0 0 12px rgba(255, 107, 107, 0.5);
+    }
+
+    &:hover {
+      border-color: rgba(255, 107, 107, 0.2);
+      background: rgba(255, 107, 107, 0.03);
+    }
+  }
+}

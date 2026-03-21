@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 48" fill="none">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#00d2ff"/>
+    </linearGradient>
+    <linearGradient id="icon-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#00d2ff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Icon: abstract "pulse" / bolt mark -->
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#icon-bg)" opacity="0.12"/>
+  <rect x="2" y="2" width="44" height="44" rx="12" stroke="url(#accent)" stroke-width="1.5" fill="none"/>
+
+  <!-- Bolt / pulse shape inside icon -->
+  <path d="M28 10L18 26h6l-2 12 10-16h-6l2-12z" fill="url(#accent)" filter="url(#glow)"/>
+
+  <!-- "Impulsa" text -->
+  <text x="58" y="22" font-family="'Space Grotesk', 'Inter', system-ui, sans-serif" font-size="22" font-weight="700" fill="#f0f0f5" letter-spacing="-0.5">
+    Impulsa
+  </text>
+
+  <!-- "Cba" text with gradient -->
+  <text x="155" y="22" font-family="'Space Grotesk', 'Inter', system-ui, sans-serif" font-size="22" font-weight="700" fill="url(#accent)" letter-spacing="-0.5">
+    Cba
+  </text>
+
+  <!-- Tagline -->
+  <text x="58" y="40" font-family="'Inter', system-ui, sans-serif" font-size="10" font-weight="400" fill="#f0f0f5" opacity="0.4" letter-spacing="2">
+    TECNOLOGIA APLICADA
+  </text>
+</svg>
