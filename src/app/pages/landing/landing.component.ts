@@ -63,12 +63,12 @@ export class LandingComponent {
 
   contenido = {
     hero: {
-      titulo: 'Implementamos sistemas para vender más y trabajar mejor',
-      subtitulo: 'Si tu negocio funciona pero está desordenado, podemos ayudarte a ordenar, automatizar y mejorar resultados.',
+      titulo: 'Te ayudamos a vender más y trabajar mejor con tecnología simple',
+      subtitulo: 'Si tu negocio funciona pero está desordenado, te ayudamos a ordenarlo, automatizarlo y mejorar resultados.',
       cta: 'Analizar mi negocio',
     },
     problema: {
-      texto: 'Si tu negocio hoy depende de WhatsApp, Excel o de tu memoria, es probable que estés perdiendo tiempo, control y oportunidades.',
+      texto: 'Trabajás mucho y hay tareas que podrías delegar para liberar tu tiempo. Es probable que estés perdiendo tiempo, control y oportunidades para abarcar más con menos esfuerzo.',
       puntos: [
         'No sabés cuánto ganás realmente',
         'No tenés seguimiento de clientes',
@@ -118,12 +118,7 @@ export class LandingComponent {
         tipo_evento: 'formulario_enviado',
       });
 
-      this.router.navigate(['/confirmation'], {
-        state: {
-          leadId: response.lead_id,
-          whatsappUrl: response.whatsapp_url,
-        },
-      });
+      this.router.navigate(['/diagnostico', response.lead_id]);
     } catch {
       // Error is handled in LeadService signal
     }

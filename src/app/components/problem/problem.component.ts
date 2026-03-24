@@ -6,7 +6,7 @@ import { Component, input } from '@angular/core';
   template: `
     <section class="problem" aria-labelledby="problem-title">
       <div class="problem__content">
-        <h2 class="problem__title" id="problem-title">¿Tu negocio tiene estos problemas?</h2>
+        <h2 class="problem__title" id="problem-title">Tu negocio está funcionando, pero sentís que podría mejorar</h2>
         <p class="problem__text">{{ text() }}</p>
         <ul class="problem__list">
           @for (bullet of bullets(); track bullet) {

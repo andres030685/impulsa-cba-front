@@ -12,7 +12,7 @@ import { Component, input, output } from '@angular/core';
       <div class="hero__content">
         <p class="hero__badge">
           <span class="hero__badge-dot" aria-hidden="true"></span>
-          Potenciado por inteligencia artificial
+          Inteligencia artificial aplicada a tu negocio
         </p>
         <h1 class="hero__title">{{ title() }}</h1>
         <p class="hero__subtitle">{{ subtitle() }}</p>

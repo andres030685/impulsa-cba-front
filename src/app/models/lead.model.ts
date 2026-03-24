@@ -48,5 +48,4 @@ export interface CrearLeadRequest {
 
 export interface CrearLeadResponse {
   lead_id: string;
-  whatsapp_url: string;
 }

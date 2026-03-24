@@ -5,7 +5,19 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./pages/landing/landing.component').then(m => m.LandingComponent),
-    title: 'Impulsa Cba — Implementamos sistemas para vender más y trabajar mejor',
+    title: 'Impulsa Cba — Te ayudamos a vender más y trabajar mejor con tecnología simple',
+  },
+  {
+    path: 'diagnostico/:leadId',
+    loadComponent: () =>
+      import('./pages/diagnostico/diagnostico.component').then(m => m.DiagnosticoComponent),
+    title: 'Impulsa Cba — Diagnóstico de tu negocio',
+  },
+  {
+    path: 'resultado/:leadId',
+    loadComponent: () =>
+      import('./pages/resultado/resultado.component').then(m => m.ResultadoComponent),
+    title: 'Impulsa Cba — Resultado del diagnóstico',
   },
   {
     path: 'confirmation',
