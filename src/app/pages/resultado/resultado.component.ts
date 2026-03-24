@@ -15,8 +15,16 @@ import { ClasificacionLead } from '../../models';
         <h1 class="resultado__title">Tu diagnóstico está listo</h1>
 
         <div class="resultado__insight">
+          <h2 class="resultado__section-title">Tu diagnóstico</h2>
           <p>{{ insight() }}</p>
         </div>
+
+        @if (mensajeCierre()) {
+          <div class="resultado__cierre">
+            <h2 class="resultado__section-title">Próximos pasos</h2>
+            <p>{{ mensajeCierre() }}</p>
+          </div>
+        }
 
         <button class="resultado__btn" (click)="goBack()">
           Volver al inicio
@@ -31,6 +39,7 @@ export class ResultadoComponent {
 
   clasificacion = signal<ClasificacionLead>('frio');
   insight = signal('');
+  mensajeCierre = signal('');
 
   badgeTexto = computed(() => {
     const map: Record<ClasificacionLead, string> = {
@@ -46,6 +55,7 @@ export class ResultadoComponent {
     const state = nav?.extras.state as {
       clasificacion: ClasificacionLead;
       insight: string;
+      mensaje_cierre?: string;
     } | undefined;
 
     if (state?.insight) {
@@ -53,6 +63,11 @@ export class ResultadoComponent {
         this.clasificacion.set(state.clasificacion);
       }
       this.insight.set(state.insight);
+      if (state.mensaje_cierre) {
+        this.mensajeCierre.set(state.mensaje_cierre);
+      }
+    } else if ((state as Record<string, unknown>)?.['fromRedirect']) {
+      this.insight.set('Ya completaste el diagnóstico. Nos vamos a comunicar pronto con vos.');
     } else {
       this.router.navigate(['/']);
     }

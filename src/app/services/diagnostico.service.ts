@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { PreguntaDiagnostico, RespuestaDiagnostico, DiagnosticoResultado } from '../models';
+import { IniciarDiagnosticoResponse, EnviarRespuestaResponse, DiagnosticoResultado } from '../models';
 import { environment } from '../../environments/environment';
 
 interface ApiResponse<T> {
@@ -20,17 +20,20 @@ export class DiagnosticoService {
   readonly loading = this._loading.asReadonly();
   readonly error = this._error.asReadonly();
 
-  async obtenerPreguntas(): Promise<PreguntaDiagnostico[]> {
+  async iniciarDiagnostico(leadId: string): Promise<IniciarDiagnosticoResponse> {
     this._loading.set(true);
     this._error.set(null);
 
     try {
       const res = await firstValueFrom(
-        this.http.get<ApiResponse<PreguntaDiagnostico[]>>(`${environment.apiUrl}/diagnostico/preguntas`),
+        this.http.post<ApiResponse<IniciarDiagnosticoResponse>>(
+          `${environment.apiUrl}/diagnostico/${leadId}/iniciar`,
+          {},
+        ),
       );
       return res.data;
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Error al obtener las preguntas';
+      const message = err instanceof Error ? err.message : 'Error al iniciar el diagnóstico';
       this._error.set(message);
       throw err;
     } finally {
@@ -38,14 +41,14 @@ export class DiagnosticoService {
     }
   }
 
-  async enviarRespuesta(leadId: string, preguntaId: string, valor: string): Promise<RespuestaDiagnostico> {
+  async enviarRespuesta(leadId: string, sesionId: string, preguntaId: string, valor: string): Promise<EnviarRespuestaResponse> {
     this._error.set(null);
 
     try {
       const res = await firstValueFrom(
-        this.http.post<ApiResponse<RespuestaDiagnostico>>(
+        this.http.post<ApiResponse<EnviarRespuestaResponse>>(
           `${environment.apiUrl}/diagnostico/${leadId}/respuestas`,
-          { pregunta_id: preguntaId, valor_respuesta: valor },
+          { sesion_id: sesionId, pregunta_id: preguntaId, valor_respuesta: valor },
         ),
       );
       return res.data;
@@ -56,7 +59,7 @@ export class DiagnosticoService {
     }
   }
 
-  async completar(leadId: string): Promise<DiagnosticoResultado> {
+  async completar(leadId: string, sesionId: string): Promise<DiagnosticoResultado> {
     this._loading.set(true);
     this._error.set(null);
 
@@ -64,7 +67,7 @@ export class DiagnosticoService {
       const res = await firstValueFrom(
         this.http.post<ApiResponse<DiagnosticoResultado>>(
           `${environment.apiUrl}/diagnostico/${leadId}/completar`,
-          {},
+          { sesion_id: sesionId },
         ),
       );
       return res.data;

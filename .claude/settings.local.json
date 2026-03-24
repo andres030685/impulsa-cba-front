@@ -35,7 +35,24 @@
       "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/$L/respuestas\" -H \"Content-Type: application/json\" -d \"{\"\"pregunta_id\"\":\"\"c469ba30-2295-491d-88e8-a09b1aaee91a\"\",\"\"valor_respuesta\"\":\"\"Mas de 30 por semana\"\"}\")",
       "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/$L/respuestas\" -H \"Content-Type: application/json\" -d \"{\"\"pregunta_id\"\":\"\"a85b18fc-93e6-415b-89dd-425ec94391d0\"\",\"\"valor_respuesta\"\":\"\"Urgente\"\"}\")",
       "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/$L/completar\" -H \"Content-Type: application/json\")",
-      "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/e99336d2-5785-447a-8e3c-f63f335bf609/completar\" -H \"Content-Type: application/json\")"
+      "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/e99336d2-5785-447a-8e3c-f63f335bf609/completar\" -H \"Content-Type: application/json\")",
+      "Bash(npm install:*)",
+      "Bash(curl -s -X POST http://localhost:3000/api/leads -H \"Content-Type: application/json\" -d \"{\"\"nombre\"\":\"\"Andres\"\",\"\"nombre_negocio\"\":\"\"Lonera Lider\"\",\"\"rubro\"\":\"\"Venta de lonas\"\",\"\"objetivos_mejora\"\":[\"\"ordenar\"\",\"\"automatizar\"\"],\"\"tamanio_equipo\"\":\"\"2_a_5\"\",\"\"telefono\"\":\"\"3512071483\"\"}\")",
+      "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/46848615-01be-4948-86d0-991e88837b0f/iniciar\" -H \"Content-Type: application/json\")",
+      "Bash(curl -s http://localhost:4200)",
+      "Bash(curl -s -X POST http://localhost:3000/api/leads -H \"Content-Type: application/json\" -d \"{\"\"nombre\"\":\"\"Test Flow\"\",\"\"nombre_negocio\"\":\"\"Panaderia\"\",\"\"rubro\"\":\"\"Gastronomia\"\",\"\"objetivos_mejora\"\":[\"\"ordenar\"\"],\"\"tamanio_equipo\"\":\"\"solo\"\",\"\"telefono\"\":\"\"3510000001\"\"}\")",
+      "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/4411949d-c17e-4c1f-89d9-3185dd8ca27a/iniciar\" -H \"Content-Type: application/json\")",
+      "Bash(tasklist)",
+      "Bash(curl -s http://localhost:4200/src/app/services/diagnostico.service.ts)",
+      "Bash(curl -s http://localhost:4200/@fs/D:/Area%20de%20trabajo/Node%20Js%20+%20Angular/ImpulsaCBA/frontend/src/app/services/diagnostico.service.ts)",
+      "Bash(taskkill //PID 732 //F)",
+      "Bash(curl -s -X POST http://localhost:3000/api/leads -H \"Content-Type: application/json\" -d \"{\"\"nombre\"\":\"\"Proba Flow\"\",\"\"nombre_negocio\"\":\"\"Kiosco Feli\"\",\"\"rubro\"\":\"\"Comercio\"\",\"\"objetivos_mejora\"\":[\"\"ordenar\"\",\"\"mas_clientes\"\"],\"\"tamanio_equipo\"\":\"\"2_a_5\"\",\"\"telefono\"\":\"\"3519998877\"\"}\")",
+      "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/d9af31d4-a170-4ef3-9a8c-bb7dbb603005/iniciar\" -H \"Content-Type: application/json\")",
+      "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/46848615-01be-4948-86d0-991e88837b0f/respuestas\" -H \"Content-Type: application/json\" -d \"{\"\"sesion_id\"\":\"\"16d3bb39-64f8-4b82-8fd8-51f3db0e36cc\"\",\"\"pregunta_id\"\":\"\"q1\"\",\"\"valor_respuesta\"\":\"\"Por recomendación de boca en boca\"\"}\")",
+      "Bash(curl -s -X POST \"http://localhost:3000/api/diagnostico/46848615-01be-4948-86d0-991e88837b0f/completar\" -H \"Content-Type: application/json\" -d \"{\"\"sesion_id\"\":\"\"16d3bb39-64f8-4b82-8fd8-51f3db0e36cc\"\"}\")",
+      "Bash(rm -rf .angular/cache)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=4096\" npx ng build)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

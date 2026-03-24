@@ -1,6 +1,6 @@
 import { ClasificacionLead } from './lead.model';
 
-export type TipoPregunta = 'opcion_unica' | 'texto_libre';
+export type TipoPregunta = 'opcion_unica' | 'opcion_multiple' | 'texto_libre';
 
 export interface PreguntaDiagnostico {
   id: string;
@@ -8,15 +8,24 @@ export interface PreguntaDiagnostico {
   tipo_pregunta: TipoPregunta;
   opciones: string[] | null;
   orden: number;
-  activo: boolean;
 }
 
-export interface RespuestaDiagnostico {
-  id: string;
-  lead_id: string;
+export interface RespuestaPrevia {
   pregunta_id: string;
   valor_respuesta: string;
-  creado_en: string;
+  respondido_en: string;
+}
+
+export interface IniciarDiagnosticoResponse {
+  sesion_id: string;
+  preguntas: PreguntaDiagnostico[];
+  respuestas_previas: RespuestaPrevia[];
+}
+
+export interface EnviarRespuestaResponse {
+  recibida: boolean;
+  respuestas_enviadas: number;
+  total_preguntas: number;
 }
 
 export interface DiagnosticoResultado {
@@ -24,4 +33,5 @@ export interface DiagnosticoResultado {
   total_respuestas: number;
   clasificacion?: ClasificacionLead;
   insight: string;
+  mensaje_cierre?: string;
 }

@@ -96,17 +96,48 @@
     background-clip: text;
   }
 
+  &__section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary, rgba(255, 255, 255, 0.45));
+    margin-bottom: 0.75rem;
+    text-align: left;
+  }
+
   &__insight {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
     padding: 1.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
 
     p {
       font-size: 1.05rem;
       line-height: 1.75;
       color: var(--text-secondary);
+      text-align: left;
+    }
+  }
+
+  &__cierre {
+    background: rgba(0, 210, 255, 0.04);
+    border: 1px solid rgba(0, 210, 255, 0.15);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+
+    .resultado__section-title {
+      color: var(--accent-primary, #00d2ff);
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      font-weight: 500;
+      color: var(--text-primary, rgba(255, 255, 255, 0.9));
       text-align: left;
     }
   }
