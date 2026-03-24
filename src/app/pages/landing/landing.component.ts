@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
 import { HeroComponent } from '../../components/hero/hero.component';
@@ -50,6 +50,7 @@ import { CrearLeadRequest } from '../../models';
     <app-faq />
 
     <app-lead-form
+      [isSubmitting]="sendingLead()"
       (formSubmit)="onFormSubmit($event)"
     />
     </main>
@@ -60,6 +61,8 @@ export class LandingComponent {
   private leadService = inject(LeadService);
   private eventService = inject(EventService);
   private router = inject(Router);
+
+  sendingLead = signal(false);
 
   contenido = {
     hero: {
@@ -110,6 +113,7 @@ export class LandingComponent {
   }
 
   async onFormSubmit(data: CrearLeadRequest): Promise<void> {
+    this.sendingLead.set(true);
     try {
       const response = await this.leadService.submitLead(data);
 
@@ -120,7 +124,7 @@ export class LandingComponent {
 
       this.router.navigate(['/diagnostico', response.lead_id]);
     } catch {
-      // Error is handled in LeadService signal
+      this.sendingLead.set(false);
     }
   }
 }

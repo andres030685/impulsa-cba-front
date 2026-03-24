@@ -58,10 +58,10 @@
     margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
-    animation: slideIn 0.3s ease;
+    animation: fadeSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 
     &::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent-gradient); }
-    &--slide-in { animation: slideOut 0.2s ease; }
+    &--slide-in { animation: fadeSlideOut 0.25s ease both; }
   }
 
   &__question {
@@ -150,8 +150,8 @@
   }
 }
 
-@keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes slideOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(-30px); } }
+@keyframes fadeSlideIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeSlideOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-8px); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 600px) {

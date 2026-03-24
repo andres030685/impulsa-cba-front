@@ -58,25 +58,25 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1.25rem;
+    padding: 0.4rem 1rem;
     margin-bottom: 2rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--text-secondary);
-    background: var(--bg-glass);
-    border: var(--glass-border);
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 100px;
-    backdrop-filter: var(--glass-blur);
   }
 
   &__badge-dot {
-    width: 6px;
-    height: 6px;
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: #00d2ff;
-    box-shadow: 0 0 8px #00d2ff;
+    box-shadow: 0 0 6px #00d2ff;
     animation: pulse 2s ease-in-out infinite;
   }
 

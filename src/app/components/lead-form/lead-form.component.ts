@@ -1,4 +1,4 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CrearLeadRequest, ObjetivoMejora, TamanioEquipo } from '../../models';
 
@@ -97,9 +97,14 @@ import { CrearLeadRequest, ObjetivoMejora, TamanioEquipo } from '../../models';
           <button
             class="form__submit"
             type="submit"
-            [disabled]="!leadForm.valid || formData.objetivos_mejora.length === 0 || submitting()"
+            [disabled]="!leadForm.valid || formData.objetivos_mejora.length === 0 || submitting() || isSubmitting()"
           >
-            {{ submitting() ? 'Enviando...' : 'Quiero mi diagnóstico' }}
+            @if (isSubmitting()) {
+              <span class="form__submit-spinner"></span>
+              Preparando diagnóstico...
+            } @else {
+              {{ submitting() ? 'Enviando...' : 'Quiero mi diagnóstico' }}
+            }
           </button>
         </form>
       </div>
@@ -110,6 +115,7 @@ import { CrearLeadRequest, ObjetivoMejora, TamanioEquipo } from '../../models';
 export class LeadFormComponent {
   formSubmit = output<CrearLeadRequest>();
   submitting = signal(false);
+  isSubmitting = input(false);
 
   opcionesObjetivo: { value: ObjetivoMejora; label: string }[] = [
     { value: 'mas_clientes', label: 'Más clientes' },

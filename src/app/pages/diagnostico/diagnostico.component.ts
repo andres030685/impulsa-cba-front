@@ -263,6 +263,6 @@ export class DiagnosticoComponent implements OnInit {
     setTimeout(() => {
       this.indiceActual.set(nuevoIndice);
       this.animating.set(false);
-    }, 200);
+    }, 250);
   }
 }
