@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
 
@@ -18,7 +19,7 @@ import { EventService } from '../../services/event.service';
           class="confirmation__wa-button"
           [href]="whatsappUrl"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           (click)="onWhatsappClick()"
         >
           Ir a WhatsApp
@@ -31,14 +32,18 @@ import { EventService } from '../../services/event.service';
   `,
   styleUrl: './confirmation.component.scss',
 })
-export class ConfirmationComponent {
+export class ConfirmationComponent implements OnDestroy {
   private router = inject(Router);
   private eventService = inject(EventService);
+  private meta = inject(Meta);
 
   whatsappUrl: string = '#';
   private leadId: string = '';
 
   constructor() {
+    this.meta.updateTag({ name: 'robots', content: 'noindex, nofollow' });
+    this.meta.updateTag({ name: 'description', content: 'Confirmación de solicitud de diagnóstico — Impulsa Cba' });
+
     const nav = this.router.getCurrentNavigation();
     const state = nav?.extras.state as { leadId: string; whatsappUrl: string } | undefined;
 
@@ -48,6 +53,11 @@ export class ConfirmationComponent {
     } else {
       this.router.navigate(['/']);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.meta.updateTag({ name: 'robots', content: 'index, follow' });
+    this.meta.updateTag({ name: 'description', content: 'Ordenamos negocios, automatizamos tareas y mejoramos resultados con tecnología aplicada. Diagnóstico gratuito para tu negocio en Córdoba.' });
   }
 
   onWhatsappClick(): void {

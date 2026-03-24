@@ -4,8 +4,9 @@ import { Component, input } from '@angular/core';
   selector: 'app-problem',
   standalone: true,
   template: `
-    <section class="problem" aria-label="Problemas comunes">
+    <section class="problem" aria-labelledby="problem-title">
       <div class="problem__content">
+        <h2 class="problem__title" id="problem-title">¿Tu negocio tiene estos problemas?</h2>
         <p class="problem__text">{{ text() }}</p>
         <ul class="problem__list">
           @for (bullet of bullets(); track bullet) {

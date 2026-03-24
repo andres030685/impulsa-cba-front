@@ -7,14 +7,14 @@ import { Component, input } from '@angular/core';
     <section class="services" aria-labelledby="services-title">
       <div class="services__content">
         <h2 class="services__title" id="services-title">Qué hacemos</h2>
-        <div class="services__grid">
+        <ul class="services__grid" role="list">
           @for (item of items(); track item; let i = $index) {
-            <div class="services__card">
-              <span class="services__number">{{ i + 1 }}</span>
-              <p class="services__text">{{ item }}</p>
-            </div>
+            <li class="services__card">
+              <span class="services__number" aria-hidden="true">{{ i + 1 }}</span>
+              <h3 class="services__text">{{ item }}</h3>
+            </li>
           }
-        </div>
+        </ul>
       </div>
     </section>
   `,

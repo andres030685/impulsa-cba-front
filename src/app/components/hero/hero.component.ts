@@ -10,10 +10,10 @@ import { Component, input, output } from '@angular/core';
       <div class="hero__grid-bg"></div>
 
       <div class="hero__content">
-        <div class="hero__badge" role="status">
+        <p class="hero__badge">
           <span class="hero__badge-dot" aria-hidden="true"></span>
           Potenciado por inteligencia artificial
-        </div>
+        </p>
         <h1 class="hero__title">{{ title() }}</h1>
         <p class="hero__subtitle">{{ subtitle() }}</p>
         <button class="hero__cta" (click)="ctaClick.emit()">

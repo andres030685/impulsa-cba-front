@@ -6,6 +6,7 @@ import { ProblemComponent } from '../../components/problem/problem.component';
 import { ServicesSectionComponent } from '../../components/services-section/services-section.component';
 import { HowItWorksComponent } from '../../components/how-it-works/how-it-works.component';
 import { LeadFormComponent } from '../../components/lead-form/lead-form.component';
+import { FaqComponent } from '../../components/faq/faq.component';
 import { LeadService } from '../../services/lead.service';
 import { EventService } from '../../services/event.service';
 import { CrearLeadRequest } from '../../models';
@@ -19,11 +20,13 @@ import { CrearLeadRequest } from '../../models';
     ProblemComponent,
     ServicesSectionComponent,
     HowItWorksComponent,
+    FaqComponent,
     LeadFormComponent,
   ],
   template: `
     <app-header (ctaClick)="scrollToForm('header')" />
 
+    <main>
     <app-hero
       [title]="contenido.hero.titulo"
       [subtitle]="contenido.hero.subtitulo"
@@ -44,9 +47,12 @@ import { CrearLeadRequest } from '../../models';
       [steps]="contenido.comoFunciona.pasos"
     />
 
+    <app-faq />
+
     <app-lead-form
       (formSubmit)="onFormSubmit($event)"
     />
+    </main>
   `,
   styles: [],
 })
