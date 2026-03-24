@@ -189,9 +189,11 @@ export class DiagnosticoComponent implements OnInit {
 
     try {
       const data = await this.diagnosticoService.iniciarDiagnostico(this.leadId);
+      console.log('[Diagnostico] /iniciar response:', data);
 
       // Lead already completed the diagnostic — redirect to resultado
       if (isDiagnosticoCompletado(data)) {
+        console.log('[Diagnostico] Detected completed, redirecting...');
         this.router.navigate(['/resultado', this.leadId], {
           state: {
             clasificacion: data.clasificacion,
@@ -239,7 +241,8 @@ export class DiagnosticoComponent implements OnInit {
         tipo_evento: 'diagnostico_iniciado',
         metadata: { total_preguntas: ordenadas.length, sesion_id, respuestas_previas: respuestas_previas?.length ?? 0 },
       });
-    } catch {
+    } catch (err) {
+      console.error('[Diagnostico] Error in iniciar:', err);
       this.error.set('No pudimos cargar las preguntas. Intentá de nuevo.');
     } finally {
       this.loading.set(false);
