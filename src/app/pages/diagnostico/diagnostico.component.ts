@@ -1,10 +1,9 @@
 import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
 import { DiagnosticoService } from '../../services/diagnostico.service';
 import { EventService } from '../../services/event.service';
-import { PreguntaDiagnostico } from '../../models';
+import { PreguntaDiagnostico, isDiagnosticoCompletado } from '../../models';
 
 @Component({
   selector: 'app-diagnostico',
@@ -189,7 +188,24 @@ export class DiagnosticoComponent implements OnInit {
     this.error.set(null);
 
     try {
-      const { sesion_id, preguntas, respuestas_previas } = await this.diagnosticoService.iniciarDiagnostico(this.leadId);
+      const data = await this.diagnosticoService.iniciarDiagnostico(this.leadId);
+
+      // Lead already completed the diagnostic — redirect to resultado
+      if (isDiagnosticoCompletado(data)) {
+        this.router.navigate(['/resultado', this.leadId], {
+          state: {
+            clasificacion: data.clasificacion,
+            insight: data.insight,
+            mensaje_cierre: data.mensaje_cierre,
+            mensaje: data.mensaje,
+            resuelto: data.resuelto,
+            fecha_resolucion: data.fecha_resolucion,
+          },
+        });
+        return;
+      }
+
+      const { sesion_id, preguntas, respuestas_previas } = data;
       this.sesionId = sesion_id;
 
       const ordenadas = preguntas.sort((a, b) => a.orden - b.orden);
@@ -223,13 +239,7 @@ export class DiagnosticoComponent implements OnInit {
         tipo_evento: 'diagnostico_iniciado',
         metadata: { total_preguntas: ordenadas.length, sesion_id, respuestas_previas: respuestas_previas?.length ?? 0 },
       });
-    } catch (err) {
-      if (err instanceof HttpErrorResponse && err.status === 400) {
-        this.router.navigate(['/resultado', this.leadId], {
-          state: { fromRedirect: true },
-        });
-        return;
-      }
+    } catch {
       this.error.set('No pudimos cargar las preguntas. Intentá de nuevo.');
     } finally {
       this.loading.set(false);

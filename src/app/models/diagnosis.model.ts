@@ -35,3 +35,19 @@ export interface DiagnosticoResultado {
   insight: string;
   mensaje_cierre?: string;
 }
+
+export interface DiagnosticoCompletadoResponse {
+  diagnostico_completado: true;
+  resuelto: boolean;
+  fecha_resolucion?: string;
+  clasificacion: ClasificacionLead;
+  insight: string;
+  mensaje_cierre: string;
+  mensaje: string;
+}
+
+export type IniciarResponse = IniciarDiagnosticoResponse | DiagnosticoCompletadoResponse;
+
+export function isDiagnosticoCompletado(data: IniciarResponse): data is DiagnosticoCompletadoResponse {
+  return 'diagnostico_completado' in data && data.diagnostico_completado === true;
+}

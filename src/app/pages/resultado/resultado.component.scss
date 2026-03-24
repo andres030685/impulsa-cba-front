@@ -83,6 +83,25 @@
       color: #00d2ff;
       border: 1px solid rgba(0, 210, 255, 0.25);
     }
+
+    &--resuelto {
+      background: rgba(168, 85, 247, 0.12);
+      color: #a855f7;
+      border: 1px solid rgba(168, 85, 247, 0.25);
+    }
+  }
+
+  &__fecha {
+    font-size: 0.85rem;
+    color: var(--text-muted, rgba(255, 255, 255, 0.4));
+    margin-bottom: 2rem;
+  }
+
+  &__mensaje {
+    font-size: 0.9rem;
+    color: var(--text-muted, rgba(255, 255, 255, 0.45));
+    margin-bottom: 2rem;
+    line-height: 1.6;
   }
 
   &__title {

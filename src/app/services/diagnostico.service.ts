@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { IniciarDiagnosticoResponse, EnviarRespuestaResponse, DiagnosticoResultado } from '../models';
+import { IniciarResponse, EnviarRespuestaResponse, DiagnosticoResultado } from '../models';
 import { environment } from '../../environments/environment';
 
 interface ApiResponse<T> {
@@ -20,13 +20,13 @@ export class DiagnosticoService {
   readonly loading = this._loading.asReadonly();
   readonly error = this._error.asReadonly();
 
-  async iniciarDiagnostico(leadId: string): Promise<IniciarDiagnosticoResponse> {
+  async iniciarDiagnostico(leadId: string): Promise<IniciarResponse> {
     this._loading.set(true);
     this._error.set(null);
 
     try {
       const res = await firstValueFrom(
-        this.http.post<ApiResponse<IniciarDiagnosticoResponse>>(
+        this.http.post<ApiResponse<IniciarResponse>>(
           `${environment.apiUrl}/diagnostico/${leadId}/iniciar`,
           {},
         ),
